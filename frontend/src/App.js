@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme } from "./utils/Themes";
+import { darkTheme, lightTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
 import { BrowserRouter } from "react-router-dom";
 import Hero from "./components/sections/Hero";
@@ -9,7 +9,7 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 import ProjectDetails from "./components/Dialog/ProjectDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -37,10 +37,30 @@ const Wrapper = styled.div`
 
 function App() {
   const [openModal, setOpenModal] = useState({ state: false, project: null });
+  const [theme, setTheme] = useState(darkTheme);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("currentTheme");
+    if (storedTheme === "lightTheme") {
+      setTheme(lightTheme);
+    } else {
+      setTheme(darkTheme);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === lightTheme ? darkTheme : lightTheme));
+    localStorage.setItem(
+      "currentTheme",
+      theme === lightTheme ? "darkTheme" : "lightTheme"
+    );
+  };
   return (
-    <ThemeProvider theme={darkTheme}>
-      <BrowserRouter>
-        <Navbar />
+    //lightTheme
+    //darkTheme
+    <ThemeProvider theme={theme}>
+      <BrowserRouter BrowserRouter >
+        <Navbar themeChanger={toggleTheme} />
         <Body>
           <AnimatePresence>
             <div>
@@ -63,8 +83,8 @@ function App() {
             </div>
           </AnimatePresence>
         </Body>
-      </BrowserRouter>
-    </ThemeProvider>
+      </BrowserRouter >
+    </ThemeProvider >
   );
 }
 

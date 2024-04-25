@@ -3,14 +3,15 @@ import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
-
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(254, 76, 6, 0.5);
+  box-shadow: 0 2px 4px rgba(240, 0, 0, 0.5);
 
   font-size: 1rem;
   position: sticky;
@@ -40,7 +41,7 @@ const NavLogo = styled(LinkR)`
   font-weight: 500;
   font-size: 22px;
   text-decoration: none;
-  color: inherit;
+  color: ${({ theme }) => theme.text_primary};
 `;
 
 const NavItems = styled.ul`
@@ -134,9 +135,13 @@ const MobileMenu = styled.ul`
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
 `;
 
-const Navbar = () => {
+const Navbar = ({ themeChanger }) => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
+  let currTheme = localStorage.getItem("currentTheme");
+  const toggleTheme = () => {
+    themeChanger(); // Call the theme changer function passed as prop
+  };
   return (
     <Nav>
       <NavbarContainer>
@@ -172,7 +177,6 @@ const Navbar = () => {
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Contact">
               Contact Me
             </NavLink>
-
             <GithubButton
               href={Bio.github}
               target="_Blank"
@@ -187,6 +191,12 @@ const Navbar = () => {
         )}
 
         <ButtonContainer>
+          {currTheme === "darkTheme" ? (
+            <CiLight className="theme-btn" onClick={toggleTheme} />
+          ) : (
+            <MdDarkMode className="theme-btn " onClick={toggleTheme} />
+          )}
+          {/* <MdDarkMode className="theme-btn " onClick={themeChanger} /> */}
           <GithubButton href={Bio.github} target="_Blank">
             Github Profile
           </GithubButton>

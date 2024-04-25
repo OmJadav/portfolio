@@ -13,7 +13,20 @@ body {
   padding: 0;
   font-family: "Montserrat", sans-serif;
 }
+.theme-btn {
+  height: 30px;
+  width: 30px;
+  margin-right: 2rem;
+  color: #fe4c06;
+}
 
+.theme-btn:hover {
+  color: #fe4c06;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: all 0.2s;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 4px;

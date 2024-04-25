@@ -56,8 +56,8 @@ const ContactForm = styled.form`
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(17, 25, 40, 0.83);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: rgba(17, 25, 40, 0);
+  border: 1px solid ${({ theme }) => theme.primary};
   padding: 32px;
   border-radius: 12px;
   box-shadow: rgba(23, 92, 230, 0.1) 0px 4px 24px;
@@ -143,10 +143,25 @@ const Contact = () => {
         </Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
+          <ContactInput
+            placeholder="Your Email"
+            type="email"
+            name="from_email"
+            required
+          />
+          <ContactInput
+            placeholder="Your Name"
+            type="text"
+            name="from_name"
+            required
+          />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage
+            placeholder="Message"
+            name="message"
+            rows={4}
+            required
+          />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
       </Wrapper>
