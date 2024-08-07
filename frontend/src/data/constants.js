@@ -161,6 +161,29 @@ export const skills = [
 export const projects = [
   {
     id: 0,
+    title: "Gadget HUB",
+    date: "June 2024 - July 2024",
+    description:
+      "My full stack e-commerce web application, built with the MERN stack, enables users to browse and purchase electronic gadgets, featuring secure payment integration via Stripe, user authentication with JWT, and responsive styling using SCSS and Tailwind CSS.",
+    image:
+      "https://raw.githubusercontent.com/OmJadav/images/main/ecommerce.png",
+    tags: [
+      "React Js",
+      "Node Js",
+      "Express Js",
+      "Mongo DB",
+      "JWT",
+      "Stripe",
+      "Context-api",
+      "Tailwind CSS"
+      , "SCSS"
+    ],
+    category: "web app",
+    github: "https://github.com/OmJadav/ecommerce-app",
+    webapp: "https://ecommerce-app-sage-ten.vercel.app",
+  },
+  {
+    id: 1,
     title: "Let's Talk",
     date: "Feb 2024 - April 2024",
     description:
@@ -182,7 +205,7 @@ export const projects = [
     webapp: "https://chatapp-ejqw.onrender.com/",
   },
   {
-    id: 1,
+    id: 2,
     title: "WanderStay",
     date: "April 2023 - Aug 2023",
     description:
@@ -202,7 +225,7 @@ export const projects = [
     webapp: "https://wander-stay-seven.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "BUYit",
     date: "Oct 2023 - Jan 2024",
     description:
