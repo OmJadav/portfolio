@@ -3,7 +3,6 @@ export const Bio = {
   roles: [
     "MERN Stack Developer",
     "Web Developer",
-    "Future Android Developer",
     "Programmer",
   ],
   description:
@@ -184,6 +183,29 @@ export const projects = [
   },
   {
     id: 1,
+    title: "CareerLink",
+    date: "August 2024 ",
+    description:
+      "Your project is a job portal built using the MERN stack, designed to connect job seekers with employers. It features role-based access control, allowing job seekers to browse, apply for jobs, and manage their profiles, while employers can post, edit, and delete job listings. The project emphasizes a modern, responsive design using Tailwind CSS and Flowbite, ensuring a visually appealing user experience across devices.",
+    image:
+      "https://raw.githubusercontent.com/OmJadav/images/main/careerlink.png",
+    tags: [
+      "React Js",
+      "Node Js",
+      "Express Js",
+      "Mongo DB",
+      "JWT",
+      "Redux toolkit",
+      "React Redux",
+      "Tailwind CSS",
+      "Flowbite"
+    ],
+    category: "web app",
+    github: "https://github.com/OmJadav/JOB_PORTAL",
+    webapp: "https://careerlink-seven.vercel.app",
+  },
+  {
+    id: 2,
     title: "Let's Talk",
     date: "Feb 2024 - April 2024",
     description:
@@ -205,7 +227,7 @@ export const projects = [
     webapp: "https://chatapp-ejqw.onrender.com/",
   },
   {
-    id: 2,
+    id: 3,
     title: "WanderStay",
     date: "April 2023 - Aug 2023",
     description:
@@ -225,7 +247,7 @@ export const projects = [
     webapp: "https://wander-stay-seven.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "BUYit",
     date: "Oct 2023 - Jan 2024",
     description:
