@@ -224,7 +224,7 @@ export const projects = [
     ],
     category: "web app",
     github: "https://github.com/OmJadav/chatApp",
-    webapp: "https://chatapp-ejqw.onrender.com/",
+    webapp: "https://lets-talk-gray.vercel.app/",
   },
   {
     id: 3,
