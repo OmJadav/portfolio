@@ -248,6 +248,23 @@ export const projects = [
   },
   {
     id: 4,
+    title: "Weather App",
+    date: "June 2024",
+    description:
+      "This is basic Weather app where i have practiced some Api calling and showed some Frontend basic skill.",
+    image:
+      "https://raw.githubusercontent.com/OmJadav/images/main/BUYit.png",
+    tags: [
+      "React Js",
+      "REST API",
+      "Tailwind CSS"
+    ],
+    category: "web app",
+    github: "https://github.com/OmJadav/weather-app",
+    webapp: "https://weather-app-chi-seven-24.vercel.app/",
+  },
+  {
+    id: 5,
     title: "BUYit",
     date: "Oct 2023 - Jan 2024",
     description:
