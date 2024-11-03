@@ -5,6 +5,7 @@ import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
+import ModalCompo from "./sections/ModalCompo";
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
@@ -137,72 +138,97 @@ const MobileMenu = styled.ul`
 
 const Navbar = ({ themeChanger }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const theme = useTheme();
   let currTheme = localStorage.getItem("currentTheme");
   const toggleTheme = () => {
     themeChanger(); // Call the theme changer function passed as prop
   };
+  const modalOpener = () => {
+    setIsModalOpen(true);
+  };
+  const modalCloser = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <Nav>
-      <NavbarContainer>
-        <NavLogo to="/">
-          <ColorText>&lt;</ColorText>Om
-          <div style={{ color: theme.primary }}>/</div>Jadav
-          <ColorText>&gt;</ColorText>
-        </NavLogo>
+    <>
+      <Nav>
+        <NavbarContainer>
+          <NavLogo to="/">
+            <ColorText>&lt;</ColorText>Om
+            <div style={{ color: theme.primary }}>/</div>Jadav
+            <ColorText>&gt;</ColorText>
+          </NavLogo>
 
-        <MobileIcon onClick={() => setIsOpen(!isOpen)}>
-          <MenuRounded style={{ color: "inherit" }} />
-        </MobileIcon>
+          <MobileIcon onClick={() => setIsOpen(!isOpen)}>
+            <MenuRounded style={{ color: "inherit" }} />
+          </MobileIcon>
 
-        <NavItems>
-          <NavLink href="#About">About</NavLink>
-          <NavLink href="#Skills">Skills</NavLink>
-          <NavLink href="#Projects">Projects</NavLink>
-          <NavLink href="#Contact">Contact Me</NavLink>
-        </NavItems>
+          <NavItems>
+            <NavLink href="#About">About</NavLink>
+            <NavLink href="#Skills">Skills</NavLink>
+            <NavLink href="#Projects">Projects</NavLink>
+            <NavLink href="#Contact">Contact</NavLink>
+            <NavLink onClick={modalOpener}>Socials</NavLink>
+          </NavItems>
 
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
-              About
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
-              Skills
-            </NavLink>
+          {isOpen && (
+            <MobileMenu isOpen={isOpen}>
+              <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
+                About
+              </NavLink>
+              <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
+                Skills
+              </NavLink>
 
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
-              Projects
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Contact">
-              Contact Me
-            </NavLink>
-            <GithubButton
-              href={Bio.github}
-              target="_Blank"
-              style={{
-                background: theme.primary,
-                color: theme.text_primary,
-              }}
-            >
+              <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
+                Projects
+              </NavLink>
+              <NavLink onClick={() => setIsOpen(!isOpen)} href="#Contact">
+                Contact
+              </NavLink>
+              <NavLink
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  modalOpener();
+                }}
+              >
+                Socials
+              </NavLink>
+              {currTheme === "darkTheme" ? (
+                <CiLight className="theme-btn" onClick={toggleTheme} />
+              ) : (
+                <MdDarkMode className="theme-btn " onClick={toggleTheme} />
+              )}
+
+              <GithubButton
+                href={Bio.github}
+                target="_Blank"
+                style={{
+                  background: theme.primary,
+                  color: theme.text_primary,
+                }}
+              >
+                Github Profile
+              </GithubButton>
+            </MobileMenu>
+          )}
+
+          <ButtonContainer>
+            {currTheme === "darkTheme" ? (
+              <CiLight className="theme-btn" onClick={toggleTheme} />
+            ) : (
+              <MdDarkMode className="theme-btn " onClick={toggleTheme} />
+            )}
+            {/* <MdDarkMode className="theme-btn " onClick={themeChanger} /> */}
+            <GithubButton href={Bio.github} target="_Blank">
               Github Profile
             </GithubButton>
-          </MobileMenu>
-        )}
-
-        <ButtonContainer>
-          {currTheme === "darkTheme" ? (
-            <CiLight className="theme-btn" onClick={toggleTheme} />
-          ) : (
-            <MdDarkMode className="theme-btn " onClick={toggleTheme} />
-          )}
-          {/* <MdDarkMode className="theme-btn " onClick={themeChanger} /> */}
-          <GithubButton href={Bio.github} target="_Blank">
-            Github Profile
-          </GithubButton>
-        </ButtonContainer>
-      </NavbarContainer>
-    </Nav>
+          </ButtonContainer>
+        </NavbarContainer>
+      </Nav>
+      <ModalCompo isModalOpen={isModalOpen} onClose={modalCloser} />
+    </>
   );
 };
 
